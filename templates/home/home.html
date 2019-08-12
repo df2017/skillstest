@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Skills TEST</a>
+    <ul class="navbar-nav mr-auto">
+    </ul>
+     <form action="{% url 'logout' %}" method="post">
+         {% csrf_token %}
+      <button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+
+</nav>
+{% endblock %}
+{% block content %}
+
+{% endblock %}

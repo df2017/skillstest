@@ -30,3 +30,4 @@ $RECYCLE.BIN/
 __pycache__
 db
 *.env
+migrations
