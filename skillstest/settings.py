@@ -12,15 +12,17 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 from django.urls import reverse_lazy
 import os, environ
 
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+environ.Env.read_env()
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sasdlasdASDASDAE#$"#$"#$DFSDFsFSD323333DS'
+SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -72,8 +74,8 @@ WSGI_APPLICATION = 'skillstest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db/db.sqlite'),
+        'ENGINE': env('DATABASE'),
+        'NAME': os.path.join(BASE_DIR, env('CONEXION')),
     }
 }
 
