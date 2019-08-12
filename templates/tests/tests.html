@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}test{% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Skills TEST</a>
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <a class="navbar-brand text-white">{{user.first_name}}&nbsp;&nbsp;</a>
+        <button class="btn btn-danger my-2 my-sm-1" type="submit">Logout</button>
+    </form>
+
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card text-left">
+                {% for test in object_list %}
+                <div class="card-header">
+                    {{ test.test_name }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Descripcion</h5>
+                    <p class="card-text">{{ test.description }}</p>
+                    <br>
+                    <h5 class="card-title">Prueba</h5>
+                     <p class="card-text">{{ test.prueba }}</p>
+                     <br>
+                    <form  method="post">
+                         {% csrf_token %}
+                         <a href="/create/" class="btn btn-primary">Iniciar</a>
+                    </form>
+
+                </div>
+                <div class="card-footer text-muted">
+                    Dificultad: {{ test.difficulty }}
+                </div>
+                    {% endfor %}
+            </div>
+        </div>
+        <div class="col-xl-6">
+            {% if 'create' %}
+            <div class="card text-left">
+    <form action="{% url 'create' %}" method="post">
+            {% csrf_token %}
+
+    <div class="card-header">
+        <h5>Usuario:&nbsp;{{ form.user_dev }}</h5>
+        <br>
+        <h6>Elegir lenguaje:&nbsp;{{ form.lenguaje }}</h6>
+
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Descripcion</h5>
+        <p class="card-text">{{ form.description }}</p>
+        <br>
+            <button type="submit" class="btn btn-primary">Guardar y Continuar</button>
+    </div>
+        <div class="card-footer text-muted">
+        <!--Dificultad: {{ test.difficulty }}-->
+        </div>
+     </form>
+</div>
+             {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

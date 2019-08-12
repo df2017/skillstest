@@ -3,7 +3,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-from django.contrib.auth.models import User
+from django.views.generic import ListView, CreateView,UpdateView,DetailView
+from .models import Test, Solution
+from django.shortcuts import render
+from .forms import SolutionForm
 
 class LoginView(FormView):
     form_class = AuthenticationForm
@@ -30,5 +33,31 @@ class LogoutView(RedirectView):
 
 class HomeView(TemplateView):
     template_name = 'home/home.html'
+
+
+class TestList(ListView):
+    model = Test
+    template_name = "tests/tests.html"
+    success_url = '/test/'
+
+class SolucionDetail(ListView):
+    model = Solution
+    template_name = "tests/solucion.html"
+
+
+class SolucionCreate(CreateView):
+    model = Solution
+    template_name = "tests/tests.html"
+    success_url = reverse_lazy('test')
+    form_class = SolutionForm
+
+    def form_valid(self, form):
+        form.save()
+        return super(SolucionCreate, self).form_valid(form)
+
+
+
+
+
 
 
