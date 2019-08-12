@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-
+from django.contrib.auth.models import User
 
 class LoginView(FormView):
     form_class = AuthenticationForm
@@ -11,6 +11,7 @@ class LoginView(FormView):
     success_url = '/home/'
 
     def dispatch(self, request, *args, **kwargs):
+
         if request.user.is_authenticated:
             return HttpResponseRedirect(self.success_url)
         else:
