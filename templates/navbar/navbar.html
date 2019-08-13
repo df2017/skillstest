@@ -7,7 +7,7 @@
     </ul>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <a class="navbar-brand text-white">{{user.first_name}}&nbsp;&nbsp;</a>
+        <a class="navbar-brand text-white">|&nbsp;{{user.username}}&nbsp;|&nbsp;&nbsp;</a>
         <button class="btn btn-danger my-0 my-sm-0" type="submit">Logout</button>
     </form>
 </nav>

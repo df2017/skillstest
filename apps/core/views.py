@@ -6,10 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Test, Solution
-from django.shortcuts import render
 from .forms import SolutionForm, TestForm
-from django.contrib.auth.models import User
-
 
 class LoginView(FormView):
     form_class = AuthenticationForm
@@ -49,6 +46,7 @@ class SolutionList(ListView):
     template_name = "solutions/solution.html"
     model = Solution
     form_class = SolutionForm
+
 
 class SolutionEdit(UpdateView):
     template_name = "solutions/solution.html"

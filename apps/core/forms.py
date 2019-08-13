@@ -1,5 +1,14 @@
 from django.forms import ModelForm
 from .models import Solution, Test
+import django_filters
+
+
+class ProductFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr='prueba1')
+
+    class Meta:
+        model = Solution
+        fields = ['user_dev']
 
 # Create the form class.
 class TestForm(ModelForm):

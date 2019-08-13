@@ -21,7 +21,6 @@
                     <th scope="col">Difficulty</th>
                     <th scope="col">Description</th>
                     <th scope="col">Test</th>
-                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,12 +29,6 @@
                     <td>{{ test.difficulty }}</td>
                     <td>{{ test.description }}</td>
                     <td>{{ test.test_desc }}</td>
-                    <td>
-                        <form method="post">
-                            {% csrf_token %}
-                            <a href="/view/" class="btn btn-primary">Ver</a>
-                        </form>
-                    </td>
                 </tr>
                 </tbody>
 
