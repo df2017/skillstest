@@ -1,0 +1,42 @@
+{% extends 'navbar/navbar.html' %}
+
+{% block title %}solution{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-xl-1">
+        </div>
+        <div class="col-xl-10">
+            <form action="{% url 'create' %}" method="post">
+                {% csrf_token %}
+                <h5 hidden>{{ form.user_dev }}</h5>
+                <div class="card">
+                    <div class="card-header">
+                        Lenguaje
+                        <div class="form-group">
+
+                            <select class="form-control" name="lenguaje" required id="id_lenguaje">
+                                {% for items in form.lenguaje %}
+                                <option value="items">{{items}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Descripcion</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" name="description" id="id_description" rows="10"></textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Guardar y Continuar</button>
+                        &nbsp;&nbsp;&nbsp;<a href="/test/" class="btn btn-danger">Volver</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.contrib import admin
+from django.contrib.auth.models import User
 
 difficulty_choices = (
     ('easy', 'Easy'),
@@ -16,8 +16,11 @@ class Test(models.Model):
     developer_name = models.CharField(max_length=50)
     create_date = models.DateField(auto_now=True)
 
+    def __str__(self):
+        return self.test_name
+
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('test_name', 'description','prueba','developer_name','create_date')
+    list_display = ('test_name','difficulty','description','prueba','developer_name','create_date')
 
 class ProgramLeng(models.Model):
     language = models.CharField(max_length=50)

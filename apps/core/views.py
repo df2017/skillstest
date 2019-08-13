@@ -3,10 +3,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView,UpdateView,DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import Test, Solution
 from django.shortcuts import render
-from .forms import SolutionForm
+from .forms import SolutionForm, TestForm
+from django.contrib.auth.models import User
+
 
 class LoginView(FormView):
     form_class = AuthenticationForm
@@ -24,6 +26,7 @@ class LoginView(FormView):
         login(self.request, form.get_user())
         return super(LoginView, self).form_valid(form)
 
+
 class LogoutView(RedirectView):
     login_url = reverse_lazy('login')
 
@@ -31,33 +34,30 @@ class LogoutView(RedirectView):
         logout(request)
         return HttpResponseRedirect(self.login_url)
 
+
 class HomeView(TemplateView):
     template_name = 'home/home.html'
 
 
 class TestList(ListView):
+    template_name = "tests/tests.html"
     model = Test
-    template_name = "tests/tests.html"
-    success_url = '/test/'
+    form_class = TestForm
 
-class SolucionDetail(ListView):
+
+class SolutionCreate(CreateView):
     model = Solution
-    template_name = "tests/solucion.html"
-
-
-class SolucionCreate(CreateView):
-    model = Solution
-    template_name = "tests/tests.html"
-    success_url = reverse_lazy('test')
+    template_name = "solutions/solution.html"
+    success_url = reverse_lazy('tests')
     form_class = SolutionForm
 
+    def get_initial(self, *args, **kwargs):
+        initial = super(SolutionCreate, self).get_initial()
+        initial['user_dev'] = self.request.user
+        return initial
+
     def form_valid(self, form):
-        form.save()
-        return super(SolucionCreate, self).form_valid(form)
-
-
-
-
-
-
-
+        self.object = form.save(commit=False)
+        self.object.user_dev = self.request.user
+        self.object.save()
+        return super(SolutionCreate, self).form_valid(form)
