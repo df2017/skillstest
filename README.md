@@ -6,7 +6,7 @@ La app consiste en evaluar las habilidades tecnicas de un programador, mediante 
 Tutorial puesta en marcha.
 
 1 - Descargar repo mediante el comando git pull + las url del repo.
-2 - Con respecto al archivo settings.py, deben crear en el mismo directorio del archivo mencionado un archivo llamado ".env", en el mismo deben configurar sus variables de entornos por seguridad al proyecto en produccion.
+2 - Con respecto al archivo settings.py, deben crear en el mismo directorio del archivo mencionado, un archivo llamado ".env", en el mismo deben configurar sus variables de entorno por seguridad al proyecto en produccion.
 3 - Luego deben crear la carpeta db para guardar el archivo de la base de datos.
 4 - Para finalizar ejecutar los siguientes comandos en la consola:
     "python manage.py migrate"
@@ -15,6 +15,7 @@ Tutorial puesta en marcha.
 
 #Informacion Adicional
 
-Sistema operativo Windows
-Python3
-Entorno virtual (virtualenv)
+Sistema operativo Windows,
+Python3,
+Entorno virtual (virtualenv),
+Los test se pueden obtener de la web hackerrank.
