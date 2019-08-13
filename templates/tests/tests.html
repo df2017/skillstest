@@ -7,6 +7,12 @@
     <br>
     <div class="row">
         <div class="col-xl-12">
+            <div class="card text-white bg-secondary mb-1">
+                <div class="card-header text-center bg-transparent border-secondary ">Desarrolla y soluciona los Tests
+                </div>
+            </div>
+            <br>
+            {% if object_list %}
             {% for test in object_list %}
             <table class="table table-primary table-bordered table-sm table-condensed">
                 <thead class="grey lighten-2">
@@ -14,7 +20,7 @@
                     <th scope="col">Test_name</th>
                     <th scope="col">Difficulty</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Prueba</th>
+                    <th scope="col">Test</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -23,19 +29,34 @@
                     <th>{{ test.test_name }}</th>
                     <td>{{ test.difficulty }}</td>
                     <td>{{ test.description }}</td>
-                    <td>{{ test.prueba }}</td>
+                    <td>{{ test.test_desc }}</td>
                     <td>
                         <form method="post">
                             {% csrf_token %}
-                            <a href="/create/" class="btn btn-danger">Iniciar Testt1</a>
+                            <a href="/view/" class="btn btn-primary">Ver</a>
                         </form>
                     </td>
                 </tr>
                 </tbody>
 
             </table>
+            <form method="post">
+                {% csrf_token %}
+                <a href="/viewlist/" class="btn btn-dark">Comenzar</a>
+                <a href="/home/" class="btn btn-danger">Volver</a>
+            </form>
             {% endfor %}
+            {% else %}
+            <h5 class="card-title">No hay registros para mostrar</h5>
+            <br>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                <a href="/home/" class="btn btn-danger">Volver</a>
+            </form>
+            {% endif %}
         </div>
     </div>
 </div>
+
 {% endblock %}

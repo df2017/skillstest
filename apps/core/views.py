@@ -3,7 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Test, Solution
 from django.shortcuts import render
 from .forms import SolutionForm, TestForm
@@ -44,11 +45,21 @@ class TestList(ListView):
     model = Test
     form_class = TestForm
 
+class SolutionList(ListView):
+    template_name = "solutions/solution.html"
+    model = Solution
+    form_class = SolutionForm
+
+class SolutionEdit(UpdateView):
+    template_name = "solutions/solution.html"
+    model = Solution
+    form_class = SolutionForm
+    success_url = reverse_lazy('view')
 
 class SolutionCreate(CreateView):
     model = Solution
-    template_name = "solutions/solution.html"
-    success_url = reverse_lazy('tests')
+    template_name = "solutions/create_solution.html"
+    success_url = reverse_lazy('viewlist')
     form_class = SolutionForm
 
     def get_initial(self, *args, **kwargs):

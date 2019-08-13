@@ -6,37 +6,61 @@
 <div class="container">
     <br>
     <div class="row">
-        <div class="col-xl-1">
-        </div>
-        <div class="col-xl-10">
-            <form action="{% url 'create' %}" method="post">
-                {% csrf_token %}
-                <h5 hidden>{{ form.user_dev }}</h5>
-                <div class="card">
-                    <div class="card-header">
-                        Lenguaje
-                        <div class="form-group">
-
-                            <select class="form-control" name="lenguaje" required id="id_lenguaje">
-                                {% for items in form.lenguaje %}
-                                <option value="items">{{items}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Descripcion</h5>
-                        <div class="form-group">
-                            <textarea class="form-control" name="description" id="id_description" rows="10"></textarea>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Guardar y Continuar</button>
-                        &nbsp;&nbsp;&nbsp;<a href="/test/" class="btn btn-danger">Volver</a>
-                    </div>
+        <div class="col-xl-12">
+            <div class="card text-white bg-secondary mb-1">
+                <div class="card-header text-center bg-transparent border-secondary ">Tests Guardados
                 </div>
+            </div>
+            <br>
+            {% if object_list %}
+
+            <table class="table table-primary table-bordered table-sm table-condensed">
+
+                <thead class="grey lighten-2">
+                <tr class="table-secundary">
+                    <th scope="col">User_name</th>
+                    <th scope="col">Lenguage</th>
+                    <th scope="col">Test</th>
+                    <th scope="col">Solucton</th>
+                    <th scope="col">Is_Done</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for viewlist in object_list %}
+                <tr>
+                    <th>{{ viewlist.user_dev }}</th>
+                    <td>{{ viewlist.leng_program }}</td>
+                    <td>{{ viewlist.test_choice }}</td>
+                    <td>{{ viewlist.description }}</td>
+                    <td>{{ viewlist.is_done }}</td>
+                    <td>
+                        <form method="post">
+                            {% csrf_token %}
+                            <a href="/update/" class="btn btn-primary">Editar</a>
+                        </form>
+                    </td>
+                </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            <form method="post">
+                {% csrf_token %}
+                <a href="/create/" class="btn btn-dark">Iniciar Tests</a>
+                <a href="/test/" class="btn btn-danger">Volver</a>
             </form>
+            {% else %}
+            <h5 class="card-title">No hay registros para mostrar. No guardaste ningun Test</h5>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                <a href="/create/" class="btn btn-dark">Iniciar Tests</a>
+                <a href="/test/" class="btn btn-danger">Volver</a>
+            </form>
+            {% endif %}
         </div>
     </div>
+    <br>
 </div>
-</div>
+
 {% endblock %}

@@ -9,10 +9,11 @@ difficulty_choices = (
 )
 
 class Test(models.Model):
+    test_id = models.AutoField(primary_key=True)
     test_name = models.CharField(max_length=50)
     difficulty = models.CharField(max_length=20,choices=difficulty_choices, default='easy')
     description = models.TextField(blank=True)
-    prueba = models.TextField(blank=True)
+    test_desc = models.TextField(blank=True)
     developer_name = models.CharField(max_length=50)
     create_date = models.DateField(auto_now=True)
 
@@ -20,7 +21,7 @@ class Test(models.Model):
         return self.test_name
 
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('test_name','difficulty','description','prueba','developer_name','create_date')
+    list_display = ('test_id','test_name','difficulty','description','test_desc','developer_name','create_date')
 
 class ProgramLeng(models.Model):
     language = models.CharField(max_length=50)
@@ -32,14 +33,16 @@ class ProgramLengAdmin(admin.ModelAdmin):
     list_display = ('language', 'create_date')
 
 class Solution(models.Model):
-    user_dev = models.ForeignKey(User, on_delete=models.CASCADE)
-    lenguaje = models.ForeignKey(ProgramLeng, on_delete=models.CASCADE)
-    description = models.TextField(blank=True)
+    solution_id = models.AutoField(primary_key=True)
+    user_dev = models.ForeignKey(User,on_delete=models.CASCADE)
+    leng_program = models.ForeignKey(ProgramLeng, on_delete=models.CASCADE)
+    test_choice = models.ForeignKey(Test, on_delete=models.CASCADE)
+    description = models.TextField(blank=True )
     release_date = models.DateField(auto_now=True)
-
+    is_done = models.BooleanField(default=False)
 
 class SolutionAdmin(admin.ModelAdmin):
-    list_display = ('user_dev', 'lenguaje','description','release_date')
+    list_display = ('solution_id','user_dev', 'leng_program','test_choice','description','release_date','is_done')
 
 
 

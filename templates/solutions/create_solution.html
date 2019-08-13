@@ -1,0 +1,51 @@
+{% extends 'navbar/navbar.html' %}
+
+{% block title %}create{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-xl-1">
+        </div>
+        <div class="col-xl-10">
+            <div class="card text-white bg-secondary mb-1">
+                <div class="card-header text-center bg-transparent border-secondary ">Desarrolla tu Test
+                </div>
+            </div>
+            <br>
+            <form action="{% url 'create' %}" method="post">
+                {% csrf_token %}
+                <h5 hidden>{{ form.user_dev }}</h5>
+                <div class="card">
+                    <div class="card-header">
+                        Lenguaje
+                        <div class="form-group">
+                            {{form.leng_program}}
+                        </div>
+                    </div>
+                    <div class="card-header">
+                        Tests
+                        <div class="form-group">
+                            {{form.test_choice}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Descripcion</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" name="description" id="id_description" rows="10"></textarea>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+  <input type="checkbox" name="is_done" id="id_is_done" class="custom-control-input">
+  <label class="custom-control-label" for="id_is_done">Finalizado</label>
+</div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Guardar y Continuar</button>
+                        &nbsp;&nbsp;&nbsp;<a href="/viewlist/" class="btn btn-danger">Volver</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
