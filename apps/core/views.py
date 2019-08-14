@@ -56,11 +56,6 @@ class SolutionEdit(UpdateView):
     form_class = SolutionUpdateForm
     success_url = reverse_lazy('viewlist')
 
-    # def form_valid(self, form):
-    #     self.object.save()
-    #     return super(SolutionEdit, self).form_valid(form)
-
-
 class SolutionCreate(CreateView):
     model = Solution
     template_name = "solutions/create_solution.html"

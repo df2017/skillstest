@@ -15,12 +15,13 @@ class TestForm(ModelForm):
         model = Test
         fields = ['test_name','difficulty','description','test_desc']
 
+class SolutionForm(ModelForm):
+    class Meta:
+        model = Solution
+        fields = ['user_dev', 'leng_program','test_choice','description','is_done']
+
 class SolutionUpdateForm(ModelForm):
     class Meta:
         model = Solution
         fields = ['leng_program','test_choice','description','is_done']
 
-class SolutionForm(ModelForm):
-    class Meta:
-        model = Solution
-        fields = ['user_dev', 'leng_program','test_choice','description','is_done']
