@@ -29,20 +29,19 @@
                 <tbody>
                 {% for viewlist in object_list %}
                 <tr>
-
                     <th>{{ viewlist.user_dev }}</th>
                     <td>{{ viewlist.leng_program }}</td>
                     <td>{{ viewlist.test_choice }}</td>
                     <td>{{ viewlist.description }}</td>
                     <td>{{ viewlist.is_done }}</td>
                     <td>
-                        <form method="post">
+                        <form method="post" action="update/{{viewlist.solution_id}}/">
                             {% csrf_token %}
-                            <a href="/update/" class="btn btn-primary">Editar</a>
+                            <a href="/update/{{viewlist.solution_id}}/" class="btn btn-success">Editar</a>
                         </form>
                     </td>
                 </tr>
-                  {% endfor %}
+                {% endfor %}
                 </tbody>
             </table>
             <form method="post">

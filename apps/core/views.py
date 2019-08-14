@@ -6,7 +6,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Test, Solution
-from .forms import SolutionForm, TestForm
+from .forms import SolutionForm, TestForm, SolutionUpdateForm
+
 
 class LoginView(FormView):
     form_class = AuthenticationForm
@@ -42,6 +43,7 @@ class TestList(ListView):
     model = Test
     form_class = TestForm
 
+
 class SolutionList(ListView):
     template_name = "solutions/solution.html"
     model = Solution
@@ -49,10 +51,15 @@ class SolutionList(ListView):
 
 
 class SolutionEdit(UpdateView):
-    template_name = "solutions/solution.html"
+    template_name = "solutions/update_solution.html"
     model = Solution
-    form_class = SolutionForm
-    success_url = reverse_lazy('view')
+    form_class = SolutionUpdateForm
+    success_url = reverse_lazy('viewlist')
+
+    # def form_valid(self, form):
+    #     self.object.save()
+    #     return super(SolutionEdit, self).form_valid(form)
+
 
 class SolutionCreate(CreateView):
     model = Solution

@@ -1,0 +1,43 @@
+{% extends 'navbar/navbar.html' %}
+
+{% block title %}update{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card text-white bg-secondary mb-1">
+                <div class="card-header text-center bg-transparent border-secondary ">Modificar Test</div>
+            </div>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                <table class="table table-primary table-bordered table-sm table-condensed">
+                    <thead class="grey lighten-2">
+                    <tr class="table-secundary">
+                        <th scope="col">Lenguage</th>
+                        <th scope="col">Test</th>
+                        <th scope="col">Solucton</th>
+                        <th scope="col">Is_Done</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ form.leng_program }}</td>
+                        <td>{{ form.test_choice }}</td>
+                        <td>{{ form.description }}</td>
+                        <td>{{ form.is_done }}</td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Guardar y volver</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}
