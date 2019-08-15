@@ -13,7 +13,7 @@ class Test(models.Model):
     test_name = models.CharField(max_length=50)
     difficulty = models.CharField(max_length=20,choices=difficulty_choices, default='easy')
     description = models.TextField(blank=True)
-    test_desc = models.TextField(blank=True)
+    task = models.TextField(blank=True)
     developer_name = models.CharField(max_length=50)
     create_date = models.DateField(auto_now=True)
 
@@ -21,7 +21,7 @@ class Test(models.Model):
         return self.test_name
 
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('test_id','test_name','difficulty','description','test_desc','developer_name','create_date')
+    list_display = ('test_id','test_name','difficulty','description','task','developer_name','create_date')
 
 class ProgramLeng(models.Model):
     leng_id = models.AutoField(primary_key=True)

@@ -56,6 +56,7 @@ class SolutionEdit(UpdateView):
     form_class = SolutionUpdateForm
     success_url = reverse_lazy('viewlist')
 
+
 class SolutionCreate(CreateView):
     model = Solution
     template_name = "solutions/create_solution.html"

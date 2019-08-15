@@ -21,7 +21,7 @@
                     <th scope="col">User_name</th>
                     <th scope="col">Lenguage</th>
                     <th scope="col">Test</th>
-                    <th scope="col">Solucton</th>
+                    <th scope="col">Solution</th>
                     <th scope="col">Is_Done</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -38,7 +38,7 @@
                     <td>
                         <form method="post" action="update/{{viewlist.solution_id}}/">
                             {% csrf_token %}
-                            <!--                            <a href="/update/{{viewlist.solution_id}}/" class="btn btn-warning">Editar</a>-->
+                             <a href="/update/{{viewlist.solution_id}}/" class="btn btn-warning">Editar</a>
                         </form>
                     </td>
                     {% endif %}
