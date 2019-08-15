@@ -6,28 +6,37 @@
 <div class="container">
     <br>
     <div class="row">
-        <div class="col-xl-1">
-        </div>
-        <div class="col-xl-10">
-            <div class="card text-white bg-secondary mb-1">
-                <div class="card-header text-center bg-transparent border-secondary ">Desarrolla tu Test
+        <div class="col-xl-12">
+            <div class="card text-white bg-primary">
+                <div class="card-header text-center bg-transparent border-primary">Utiliza tus habilidades para resolver
+                    los Tests
                 </div>
             </div>
             <br>
             <form action="{% url 'create' %}" method="post">
                 {% csrf_token %}
                 <h5 hidden>{{ form.user_dev }}</h5>
-                <div class="card">
+                <div class="card bg-light mb-3 ">
                     <div class="card-header">
-                        Lenguaje
-                        <div class="form-group">
-                            {{form.leng_program}}
-                        </div>
-                    </div>
-                    <div class="card-header">
-                        Tests
-                        <div class="form-group">
-                            {{form.test_choice}}
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <h5 class="card-title">Lenguaje</h5>
+                                <select name="leng_program" required id="id_leng_program" class="form-control">
+                                    {% for leng in form.leng_program %}
+                                    <option>{{leng}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <h5 class="card-title">Tests</h5>
+                                <select name="test_choice" required id="id_test_choice" class="form-control">
+                                    {% for choice in form.test_choice %}
+                                    <option>{{choice}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

@@ -7,15 +7,15 @@
     <br>
     <div class="row">
         <div class="col-xl-12">
-            <div class="card text-white bg-secondary mb-1">
-                <div class="card-header text-center bg-transparent border-secondary ">Desarrolla y soluciona los Tests
+            <div class="card text-white bg-primary mb-1">
+                <div class="card-header text-center bg-transparent border-primary ">Desarrolla y soluciona los Tests
                 </div>
             </div>
             <br>
-{% if object_list %}
-            <table class="table table-primary table-bordered table-sm table-condensed">
-                <thead class="grey lighten-2">
-                <tr class="table-secundary">
+            {% if object_list %}
+            <table class="table table-striped table-light table-borderless">
+                <thead>
+                <tr class="bg-secondary text-white">
                     <th scope="col">Test_name</th>
                     <th scope="col">Difficulty</th>
                     <th scope="col">Description</th>
@@ -23,15 +23,14 @@
                 </tr>
                 </thead>
                 <tbody>
-
-            {% for test in object_list %}
+                {% for test in object_list %}
                 <tr>
                     <th>{{ test.test_name }}</th>
                     <td>{{ test.difficulty }}</td>
                     <td>{{ test.description }}</td>
                     <td>{{ test.test_desc }}</td>
                 </tr>
-                 {% endfor %}
+                {% endfor %}
                 </tbody>
             </table>
             <form method="post">

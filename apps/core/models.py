@@ -24,13 +24,14 @@ class TestAdmin(admin.ModelAdmin):
     list_display = ('test_id','test_name','difficulty','description','test_desc','developer_name','create_date')
 
 class ProgramLeng(models.Model):
-    language = models.CharField(max_length=50)
+    leng_id = models.AutoField(primary_key=True)
+    language = models.CharField(max_length=50, unique=True)
     create_date = models.DateField(auto_now=True)
     def __str__(self):
         return self.language
 
 class ProgramLengAdmin(admin.ModelAdmin):
-    list_display = ('language', 'create_date')
+    list_display = ('leng_id','language', 'create_date')
 
 class Solution(models.Model):
     solution_id = models.AutoField(primary_key=True)
