@@ -12,8 +12,7 @@
                 </div>
             </div>
             <br>
-            {% if object_list %}
-            {% for test in object_list %}
+{% if object_list %}
             <table class="table table-primary table-bordered table-sm table-condensed">
                 <thead class="grey lighten-2">
                 <tr class="table-secundary">
@@ -24,21 +23,23 @@
                 </tr>
                 </thead>
                 <tbody>
+
+            {% for test in object_list %}
                 <tr>
                     <th>{{ test.test_name }}</th>
                     <td>{{ test.difficulty }}</td>
                     <td>{{ test.description }}</td>
                     <td>{{ test.test_desc }}</td>
                 </tr>
+                 {% endfor %}
                 </tbody>
-
             </table>
             <form method="post">
                 {% csrf_token %}
                 <a href="/viewlist/" class="btn btn-dark">Comenzar</a>
                 <a href="/home/" class="btn btn-danger">Volver</a>
             </form>
-            {% endfor %}
+
             {% else %}
             <h5 class="card-title">No hay registros para mostrar</h5>
             <br>
