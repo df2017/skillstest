@@ -1,5 +1,7 @@
 body{
-    background: -webkit-linear-gradient(left, #D5D4D4, #CDCDCD);
+    background: -webkit-linear-gradient(left, #68EACC 0%, #497BE8 100%);
+
+
 }
 .contact-form{
     background: #fff;

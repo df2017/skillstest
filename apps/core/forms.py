@@ -5,7 +5,7 @@ from .models import Solution, Test
 class TestForm(ModelForm):
     class Meta:
         model = Test
-        fields = ['test_name','difficulty','description','task']
+        fields = ['test_id','test_name','difficulty','description','task']
 
 class SolutionForm(ModelForm):
     class Meta:

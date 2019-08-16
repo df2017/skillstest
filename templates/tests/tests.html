@@ -8,23 +8,24 @@
     <br>
     <div class="row">
         <div class="col-xl-12">
-            <div class="card-header text-white text-center bg-primary">
+            <div class="card-header text-white text-center bg-danger">
                 Desarrolla los Tests
             </div>
             <br>
-            {% for test in object_list %}
             <div class="accordion" id="accordionExample">
+                {% if object_list %}
+                {% for item in object_list %}
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapse{{test.test_id}}"
+                                    data-target="#collapse{{item.test_id}}"
                                     aria-controls="collapseOne">
-                                {{ test.test_name }}
+                                {{ item.test_name }}
                             </button>
                         </h2>
                     </div>
-                    <div id="collapse{{test.test_id}}" class="collapse show" aria-labelledby="headingOne"
+                    <div id="collapse{{item.test_id}}" class="collapse body" aria-labelledby="headingOne"
                          data-parent="#accordionExample">
                         <div class="card-body">
                             <div class="card-body">
@@ -34,21 +35,30 @@
                                     </div>
                                     <div class="col-2">
                                         <div class="alert alert-danger" role="alert">
-                                            <a href="#" class="alert-link">Level:&nbsp;&nbsp;</a>{{ test.difficulty }}
+                                            <a href="#" class="alert-link">Level:&nbsp;&nbsp;</a>{{ item.difficulty }}
                                         </div>
                                     </div>
                                 </div>
-                                <p class="card-text">{{ test.description }}</p>
+                                <p class="card-text" id="copy1">{{ item.description }}</p>
+            <div class="row">
+            <button type="button" class="btn btn-outline-danger btn-sm ml-auto" data-clipboard-target="#copy1">
+                Copy
+            </button>
+                </div>
                                 <h4>Task</h4>
-                                <p class="card-text">{{ test.task }}</p>
+                                <p class="card-text" id="copy2">{{ item.task }}</p>
+                                 <div class="row">
+                                <button type="button" class="btn btn-outline-danger btn-sm ml-auto" data-clipboard-target="#copy2">
+                Copy
+            </button>
+                                      </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
             <br>
-            {% if object_list %}
             <form method="post">
                 {% csrf_token %}
                 <a href="/viewlist/" class="btn btn-dark">Comenzar</a>
@@ -68,5 +78,12 @@
     <br>
     <br>
 </div>
+<script>
+new ClipboardJS('.btn', {
+    text: function(trigger) {
+        return trigger.getAttribute('aria-label');
+    }
+});
+</script>
 
 {% endblock %}
