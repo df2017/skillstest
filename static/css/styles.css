@@ -16,9 +16,8 @@ body{
     text-align: center;
 }
 .contact-image img{
-    border-radius: 6rem;
     width: 20%;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 .contact-form form{
     padding: 10%;

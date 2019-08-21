@@ -38,19 +38,21 @@
                                             <a href="#" class="alert-link">Level:&nbsp;&nbsp;</a>{{ item.difficulty }}
                                         </div>
                                     </div>
+                                    <tr>
                                 </div>
-                                <p class="card-text" id="copy1">{{ item.description }}</p>
+                                {% cycle item.test_id as row silent %}
+                                <p class="card-text" id="copy{{row}}">{{ item.description }}</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
-                                            data-clipboard-target="#copy1">
+                                            data-clipboard-target="#copy{{row}}">
                                         Copy
                                     </button>
                                 </div>
                                 <h4>Task</h4>
-                                <p class="card-text" id="copy2">{{ item.task }}</p>
+                                <p class="card-text" id="copy2{{row}}">{{ item.task }}</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
-                                            data-clipboard-target="#copy2">
+                                            data-clipboard-target="#copy2{{row}}">
                                         Copy
                                     </button>
                                 </div>
@@ -87,6 +89,7 @@ new ClipboardJS('.btn', {
         return trigger.getAttribute('aria-label');
     }
 });
+
 
 </script>
 

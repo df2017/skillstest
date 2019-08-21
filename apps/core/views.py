@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.views.generic import FormView, TemplateView, RedirectView,ListView
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
@@ -7,6 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from .models import Test, Solution
 from .forms import SolutionForm, TestForm, SolutionUpdateForm
 from django.contrib.auth.models import User
+import urllib.parse
 
 
 class LoginView(FormView):
@@ -44,9 +47,6 @@ class TestList(ListView):
 
     def get_context_data(self,**kwargs):
         context = super(TestList, self).get_context_data(**kwargs)
-        row = len(context['object_list'])
-        context['count'] = [str(i) for i in range(row)]
-        print(context)
         return context
 
 class SolutionList(ListView):
@@ -71,11 +71,11 @@ class SolutionCreate(CreateView):
     form_class = SolutionForm
 
 
-    # def get_initial(self, *args, **kwargs):
-    #     initial = super(SolutionCreate, self).get_initial()
-    #     initial['user_dev'] = self.request.user
-    #     print(initial)
-    #     return initial
+    def get_initial(self, *args, **kwargs):
+        initial = super(SolutionCreate, self).get_initial()
+        initial['user_dev'] = self.request.user
+        print(initial)
+        return initial
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
