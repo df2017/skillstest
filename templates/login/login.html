@@ -5,31 +5,25 @@
 {% block content %}
 <div class="container">
     <div class="row">
-    </div>
-    <div class="row">
-    </div>
-    <div class="row">
-        <div class="col-xl-3">
+        <div class="col-xl">
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-5">
             <div class="container contact-form">
-
                 <div class="contact-image">
-                    <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+                    <img src="../static/images/developer.svg" alt="rocket_contact"/>
                 </div>
                 <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
 
-                    <h2>Skills Test</h2>
+                    <h2>Users & Skills</h2>
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="Username" required/>
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password" required/>
                     </div>
-                    <button type="submit" class="btn btn-danger btn-block">Login</button>
+                    <button type="submit" class="rounded-pill btn-danger btn-block shadow p-2 mb-3">Login</button>
                     {% if form.non_field_errors %}
-                    <br>
                     <div class="alert alert-danger" role="alert">
                         Usuario o contraseña incorrecta. Intente nuevamente.
                     </div>
@@ -37,7 +31,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-xl-3">
+        <div class="col-xl">
         </div>
     </div>
 </div>

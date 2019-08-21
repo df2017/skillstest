@@ -50,6 +50,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'skillstest.urls'
 
+SESSION_COOKIE_AGE = int(env('EXPIRE'))
+SESSION_EXPIRE_AT_BROWSER_CLOSE = env('SESSION')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

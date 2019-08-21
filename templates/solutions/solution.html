@@ -8,8 +8,8 @@
     <br>
     <div class="row">
         <div class="col-xl-12">
-            <div class="card text-white bg-primary mb-1">
-                <div class="card-header text-center bg-transparent border-secondary ">Tests Guardados
+            <div class="card text-white bg-danger mb-1">
+                <div class="card-header text-center bg-transparent">Tests Guardados
                 </div>
             </div>
             <br>
@@ -29,7 +29,6 @@
                 <tbody>
                 {% for viewlist in object_list %}
                 <tr>
-                    {% if viewlist.user_dev|tostring == user.username %}
                     <th>{{ viewlist.user_dev }}</th>
                     <td>{{ viewlist.leng_program }}</td>
                     <td>{{ viewlist.test_choice }}</td>
@@ -41,7 +40,7 @@
                              <a href="/update/{{viewlist.solution_id}}/" class="btn btn-warning">Editar</a>
                         </form>
                     </td>
-                    {% endif %}
+
                 </tr>
                 {% endfor %}
                 </tbody>

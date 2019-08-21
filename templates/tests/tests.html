@@ -40,18 +40,21 @@
                                     </div>
                                 </div>
                                 <p class="card-text" id="copy1">{{ item.description }}</p>
-            <div class="row">
-            <button type="button" class="btn btn-outline-danger btn-sm ml-auto" data-clipboard-target="#copy1">
-                Copy
-            </button>
-                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
+                                            data-clipboard-target="#copy1">
+                                        Copy
+                                    </button>
+                                </div>
                                 <h4>Task</h4>
                                 <p class="card-text" id="copy2">{{ item.task }}</p>
-                                 <div class="row">
-                                <button type="button" class="btn btn-outline-danger btn-sm ml-auto" data-clipboard-target="#copy2">
-                Copy
-            </button>
-                                      </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
+                                            data-clipboard-target="#copy2">
+                                        Copy
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -84,6 +87,7 @@ new ClipboardJS('.btn', {
         return trigger.getAttribute('aria-label');
     }
 });
+
 </script>
 
 {% endblock %}
