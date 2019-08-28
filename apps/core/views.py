@@ -7,7 +7,7 @@ from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Test, Solution
-from .forms import SolutionForm, TestForm, SolutionUpdateForm
+from .forms import SolutionForm, TestForm
 from django.contrib.auth.models import User
 import urllib.parse
 
@@ -59,26 +59,31 @@ class SolutionList(ListView):
         return queryset.filter(user_dev=self.request.user)
 
 class SolutionEdit(UpdateView):
-    template_name = "solutions/update_solution.html"
+    template_name = "solutions/addupdate_solution.html"
     model = Solution
-    form_class = SolutionUpdateForm
+    form_class = SolutionForm
     success_url = reverse_lazy('viewlist')
+
+    def get_context_data(self,**kwargs):
+        context = super(SolutionEdit, self).get_context_data(**kwargs)
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super(SolutionEdit, self).get_form_kwargs()
+        kwargs['user_dev'] = self.request.user
+        return kwargs
 
 class SolutionCreate(CreateView):
     model = Solution
-    template_name = "solutions/create_solution.html"
+    template_name = "solutions/addupdate_solution.html"
     success_url = reverse_lazy('viewlist')
     form_class = SolutionForm
 
-
-    def get_initial(self, *args, **kwargs):
-        initial = super(SolutionCreate, self).get_initial()
-        initial['user_dev'] = self.request.user
-        print(initial)
-        return initial
-
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user_dev = self.request.user
-        self.object.save()
+        form.instance.user_dev = self.request.user
         return super(SolutionCreate, self).form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super(SolutionCreate, self).get_form_kwargs()
+        kwargs['user_dev'] = self.request.user
+        return kwargs

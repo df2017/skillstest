@@ -1,0 +1,74 @@
+{% extends 'navbar/navbar.html' %}
+{% load filters %}
+{% block title %}create{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-xl-12">
+                <div class="card-header text-white text-center bg-danger">Choose and do the tests
+                </div>
+
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.media }}
+
+                {% if form.subject.errors %}
+                <ol>
+                    {% for error in form.subject.errors %}
+                    <li><strong>Error: {{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+
+                <div class="card bg-light mb-3 ">
+                    <div class="card-header">
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <h5 class="card-title">Language</h5>
+                                <select name="leng_program" required id="id_leng_program" class="form-control">
+                                    {% for leng in form.leng_program %}
+                                    <option>{{leng}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <h5 class="card-title">Tests</h5>
+                                <select class="form-control" name="test_choice" required id="id_test_choice">
+                                    {% for choice in form.test_choice %}
+                                    <option>{{choice}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="form-group">
+                            <h4 class="card-title card-center">Description</h4>
+                            <br>
+                            <div class="col">{{ form.description }}</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="is_done" id="id_is_done" class="custom-control-input"
+                                       value="{{form.is_done}}">
+                                <label class="custom-control-label" for="id_is_done">Finalized</label>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            &nbsp;&nbsp;&nbsp;<a href="/viewlist/" class="btn btn-danger">Back</a>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

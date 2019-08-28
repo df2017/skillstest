@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 difficulty_choices = (
     ('easy', 'Easy'),
@@ -12,7 +13,7 @@ class Test(models.Model):
     test_id = models.AutoField(primary_key=True)
     test_name = models.CharField(max_length=50)
     difficulty = models.CharField(max_length=20,choices=difficulty_choices, default='easy')
-    description = models.TextField(blank=True)
+    description = RichTextField()
     task = models.TextField(blank=True)
     developer_name = models.CharField(max_length=50)
     create_date = models.DateField(auto_now=True)
@@ -38,7 +39,7 @@ class Solution(models.Model):
     user_dev = models.ForeignKey(User,on_delete=models.CASCADE)
     leng_program = models.ForeignKey(ProgramLeng, on_delete=models.CASCADE)
     test_choice = models.ForeignKey(Test, on_delete=models.CASCADE)
-    description = models.TextField(blank=True )
+    description = RichTextField()
     release_date = models.DateField(auto_now=True)
     is_done = models.BooleanField(default=False)
 

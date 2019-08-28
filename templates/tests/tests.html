@@ -8,8 +8,7 @@
     <br>
     <div class="row">
         <div class="col-xl-12">
-            <div class="card-header text-white text-center bg-danger">
-                Desarrolla los Tests
+            <div class="card-header text-white text-center bg-danger">List Tests
             </div>
             <br>
             <div class="accordion" id="accordionExample">
@@ -41,15 +40,15 @@
                                     <tr>
                                 </div>
                                 {% cycle item.test_id as row silent %}
-                                <p class="card-text" id="copy{{row}}">{{ item.description }}</p>
+                                <p class="card-text" id="copy1{{row}}">{{ item.description|safe }}</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
-                                            data-clipboard-target="#copy{{row}}">
+                                            data-clipboard-target="#copy1{{row}}">
                                         Copy
                                     </button>
                                 </div>
                                 <h4>Task</h4>
-                                <p class="card-text" id="copy2{{row}}">{{ item.task }}</p>
+                                <p class="card-text" id="copy2{{row}}">{{ item.task|safe }}</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
                                             data-clipboard-target="#copy2{{row}}">
