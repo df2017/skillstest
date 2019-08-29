@@ -1,9 +1,17 @@
 # Users & Skills
-_Appweb desarrolada en python con el framework DJANGO.
+
+Appweb desarrolada en python con el framework DJANGO.
 
 ## Introduccion
 	
-La app consiste en evaluar las habilidades tecnicas de un programador, mediante una serie de pruebas con respecto al lenguaje de 	programacion en la cual se especializa.
+La app esta orientada al area de Recursos Humanos de cualquier empresa de Software, tiene por objetivo facilitar la toma de decision
+de los candidatos que se postularon a un puesto de trabajo ofrecido, llevar un historial del perfil y a futuro, medir el rendimiento y performance del empleado contratado. Consiste en evaluar las habilidades tecnicas y analiticas, mediante una serie de pruebas con respecto al lenguaje de programacion en la cual se especializa.
+
+## Requisitos 
+
+Ejecutar el siguiente comando en la terminal:
+
+pip install -r requirements.txt
 
 ## Instalacion
 
