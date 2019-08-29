@@ -2,7 +2,7 @@
 
 {% block nav %}
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Users & Skills</a>
+    <a class="navbar-brand" href="#" id="sidebarCollapse">Users & Skills</a>
     <ul class="navbar-nav mr-auto">
     </ul>
     <form action="{% url 'logout' %}" method="post">
@@ -12,3 +12,39 @@
     </form>
 </nav>
 {% endblock %}
+
+ {% block content %}
+    <nav id="sidebar">
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/home/">Home</a>
+            </li>
+            <li>
+                <a href="/test/">Tests</a>
+            </li>
+            <li>
+                <a href="#">Profile</a>
+            </li>
+            <li>
+                <a href="#">Performance</a>
+            </li>
+             <li>
+                <a href="#">Achievements</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+<script>
+  $(document).ready(function () {
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+});
+</script>
+    {% endblock %}
+

@@ -3,7 +3,7 @@
 
 {% block title %}test{% endblock %}
 
-{% block content %}
+{% block content2 %}
 <div class="container">
     <br>
     <div class="row">
@@ -40,7 +40,7 @@
                                     <tr>
                                 </div>
                                 {% cycle item.test_id as row silent %}
-                                <p class="card-text" id="copy1{{row}}">{{ item.description|safe }}</p>
+                                <p class="card-text" id="copy1{{row}}">{{ item.description }}</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
                                             data-clipboard-target="#copy1{{row}}">
@@ -48,7 +48,7 @@
                                     </button>
                                 </div>
                                 <h4>Task</h4>
-                                <p class="card-text" id="copy2{{row}}">{{ item.task|safe }}</p>
+                                <p class="card-text" id="copy2{{row}}">{{ item.task }}</p>
                                 <div class="row">
                                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
                                             data-clipboard-target="#copy2{{row}}">
@@ -65,8 +65,7 @@
             <br>
             <form method="post">
                 {% csrf_token %}
-                <a href="/viewlist/" class="btn btn-dark">Comenzar</a>
-                <a href="/home/" class="btn btn-danger">Volver</a>
+                <a href="/viewlist/" class="btn btn-dark">Start</a>
             </form>
             {% else %}
             <h5 class="card-title">No hay registros para mostrar</h5>
@@ -88,6 +87,7 @@ new ClipboardJS('.btn', {
         return trigger.getAttribute('aria-label');
     }
 });
+
 
 
 </script>

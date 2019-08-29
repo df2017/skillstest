@@ -5,14 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!--<link rel="stylesheet" href="{% static 'js/simple-sidebar.css' %}">-->
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
     <script src="{% static 'js/clipboard.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
 {% block nav %}{% endblock %}
-{% block content %}{% endblock %}
+<div class="wrapper">
+    {% block content %}{% endblock %}
+    {% block content2 %}{% endblock %}
+</div>
 </body>
 </html>
