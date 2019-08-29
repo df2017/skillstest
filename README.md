@@ -15,13 +15,15 @@ pip install -r requirements.txt
 
 ## Instalacion
 
-1. Descargar repo mediante el comando "git clone https://github.com/df2017/skillstest.git".
+1. Descargar repo mediante el comando "git clone https://github.com/df2017/userskills.git".
 
-2. Con respecto al archivo settings.py, deben crear en el mismo directorio del archivo mencionado, un archivo llamado ".env", en el mismo    deben configurar sus variables de entorno por seguridad al proyecto en produccion.
+2. Luego ejecuta los "Requisitos".
 
-3. Luego deben crear la carpeta db para guardar el archivo de la base de datos.
+3. Con respecto al archivo settings.py, deben crear en el mismo directorio del archivo mencionado, un archivo llamado ".env", en el mismo    deben configurar sus variables de entorno por seguridad al proyecto en produccion.
 
-4. Para finalizar ejecutar los siguientes comandos en la consola:
+4. Luego deben crear la carpeta db para guardar el archivo de la base de datos.
+
+5. Para finalizar ejecutar los siguientes comandos en la consola:
 	"python manage.py makemigrations"
 	"python manage.py migrate"
 	"python manage.py createsuperuser"
