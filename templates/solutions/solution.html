@@ -6,27 +6,28 @@
 {% block content2 %}
 <div class="container">
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Read before continue</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       You have thirty minutes for complete the test.
-        Are you ready?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-       <a href="/create/" class="btn btn-dark">Continue</a>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Read before continue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You have thirty minutes for complete the test.
+                    Are you ready?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="/create/" class="btn btn-dark">Continue</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
     <br>
     <div class="row">
         <div class="col-xl-12">
@@ -45,6 +46,7 @@
                     <th scope="col">Solution</th>
                     <th scope="col">Is_Done</th>
                     <th scope="col">Create_date</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,20 +58,20 @@
                     <td>{{ viewlist.description|safe }}</td>
                     <td>{{ viewlist.is_done }}</td>
                     <td>{{ viewlist.create_date }}</td>
-                        <!--<form method="post" action="update/{{viewlist.solution_id}}/">-->
-                            <!--{% csrf_token %}-->
-                             <!--<a href="/update/{{viewlist.solution_id}}/" class="btn btn-warning">Edit</a>-->
-                        <!--</form>-->
+                    <td>
+                        <form method="post" action="update/{{viewlist.solution_id}}/">
+                            {% csrf_token %}
+                            <a href="/update/{{viewlist.solution_id}}/" class="btn btn-warning">Edit</a>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
             <form method="post">
                 {% csrf_token %}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Begin Tests
-</button>
 
+                <a href="/create/" class="btn btn-dark">Begin Tests</a>
                 <a href="/test/" class="btn btn-danger">Back</a>
             </form>
             {% else %}
@@ -85,5 +87,4 @@
     </div>
     <br>
 </div>
-
 {% endblock %}

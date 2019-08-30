@@ -13,38 +13,41 @@
 </nav>
 {% endblock %}
 
- {% block content %}
-    <nav id="sidebar">
-        <ul class="list-unstyled components">
-            <li>
-                <a href="/home/">Home</a>
-            </li>
-            <li>
-                <a href="/test/">Tests</a>
-            </li>
-            <li>
-                <a href="#">Profile</a>
-            </li>
-            <li>
-                <a href="#">Performance</a>
-            </li>
-             <li>
-                <a href="#">Achievements</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </nav>
-
+{% block content %}
+<nav id="sidebar">
+    <ul class="list-unstyled components">
+        <br>
+        <li>
+            <a href="/home/"><img src="../static/images/home.png"/>Home</a>
+        </li>
+        <br>
+        <li>
+            <a href="/test/"><img src="../static/images/tests.png"/>Tests</a>
+        </li>
+        <br>
+        <li>
+            <a href="#"><img src="../static/images/profile.png"/>Profile</a>
+        </li>
+        <br>
+        <li>
+            <a href="#"><img src="../static/images/perfomance.png"/>Performance</a>
+        </li>
+        <br>
+        <li>
+            <a href="#"><img src="../static/images/achievement.png"/>Achievements</a>
+        </li>
+        <br>
+        <li>
+            <a href="#"><img src="../static/images/contact.png"/>Contact</a>
+        </li>
+    </ul>
+</nav>
 <script>
   $(document).ready(function () {
-
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
-
 });
 </script>
-    {% endblock %}
+{% endblock %}
 

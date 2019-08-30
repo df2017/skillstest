@@ -18,9 +18,15 @@ a, a:hover, a:focus {
     text-decoration: none;
     transition: all 0.3s;
 }
+img {
+	width: 15%;
+	margin-left: 10px;
+	margin-right: 15%;
+	
+}
 
 #sidebar {
-    background: black;
+    background: #000000;
     color: #fff;
     transition: all 0.5s;
 }
@@ -30,10 +36,6 @@ a, a:hover, a:focus {
     background: #6d7fcc;
 }
 
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
-}
 
 #sidebar ul p {
     color: #fff;
@@ -66,7 +68,7 @@ ul ul a {
 }
 
 #sidebar {
-    min-width: 250px;
+    min-width: 200px;
     max-width: 250px;
     min-height: 100vh;
 }
@@ -89,8 +91,9 @@ ul ul a {
     text-align: center;
 }
 .contact-image img{
-    width: 20%;
+    width: 30%;
     margin-top: 10%;
+	margin-left: 15%;
 }
 .contact-form form{
     padding: 10%;

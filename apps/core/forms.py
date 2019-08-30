@@ -12,7 +12,7 @@ class SolutionForm(ModelForm):
     description = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Solution
-        fields = ['leng_program','test_choice','description','is_done','create_date']
+        fields = ['leng_program','test_choice','description','is_done']
 
     def __init__(self, user_dev, *args, **kwargs):
         super(SolutionForm, self).__init__(*args, **kwargs)

@@ -39,7 +39,7 @@ class Solution(models.Model):
     solution_id = models.AutoField(primary_key=True)
     user_dev = models.ForeignKey(User,on_delete=models.CASCADE)
     leng_program = models.ForeignKey(ProgramLeng, on_delete=models.CASCADE)
-    test_choice = models.OneToOneField(Test, on_delete=models.CASCADE)
+    test_choice = models.ForeignKey(Test, on_delete=models.CASCADE)
     description = RichTextField()
     create_date = models.DateTimeField(default=timezone.now)
     updated_date = models.DateTimeField(auto_now=True)
