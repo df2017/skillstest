@@ -35,4 +35,5 @@ pip install -r requirements.txt
 
 ## Screenshot
 
-.. image:: ../screenshot/home_page.png
+![alt text](https://github.com/df2017/userskills/blob/master/screenshot/home_page.JPG)
+
