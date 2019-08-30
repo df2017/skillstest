@@ -32,3 +32,7 @@ pip install -r requirements.txt
 	b. "python manage.py migrate"
 	c. "python manage.py createsuperuser"
 	d. "python manage.py runserver"
+
+## Screenshot
+
+.. image:: ../screenshot/home_page.png
