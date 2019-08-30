@@ -6,79 +6,149 @@
 {% block content2 %}
 <div class="container">
     <br>
+    {% if object_list %}
     <div class="row">
-        <div class="col-xl-12">
-            <div class="card-header text-white text-center bg-danger">List Tests
-            </div>
-            <br>
-            <div class="accordion" id="accordionExample">
-                {% if object_list %}
-                {% for item in object_list %}
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapse{{item.test_id}}"
-                                    aria-controls="collapseOne">
-                                {{ item.test_name }}
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapse{{item.test_id}}" class="collapse body" aria-labelledby="headingOne"
-                         data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h4>Description</h4>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="alert alert-danger" role="alert">
-                                            <a href="#" class="alert-link">Level:&nbsp;&nbsp;</a>{{ item.difficulty }}
-                                        </div>
-                                    </div>
-                                    <tr>
-                                </div>
-                                {% cycle item.test_id as row silent %}
-                                <p class="card-text" id="copy1{{row}}">{{ item.description }}</p>
-                                <div class="row">
-                                    <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
-                                            data-clipboard-target="#copy1{{row}}">
-                                        Copy
-                                    </button>
-                                </div>
-                                <h4>Task</h4>
-                                <p class="card-text" id="copy2{{row}}">{{ item.task }}</p>
-                                <div class="row">
-                                    <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
-                                            data-clipboard-target="#copy2{{row}}">
-                                        Copy
-                                    </button>
-                                </div>
+        {% for item in object_list %}
+        {% cycle item.test_id as modals silent %}
+        <div class="col-xl-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    TEST {{ forloop.counter }} #
+                </div>
+                <div class="card-body">
 
-                            </div>
+                    <h5 class="card-title">{{ item.test_name }}</h5>
+                    <div class="col">
+                        <div class="alert alert-danger" role="alert">
+                            <a href="#" class="alert-link">Level:&nbsp;&nbsp;</a>{{ item.difficulty }}
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+                <div class="card-footer text-muted">
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target=".bd-example-modal-lg{{modals}}">View
+                        description
+                    </button>
+                </div>
             </div>
-            <br>
-            <form method="post">
-                {% csrf_token %}
-                <a href="/viewlist/" class="btn btn-dark">Start</a>
-            </form>
-            {% else %}
-            <h5 class="card-title">No hay registros para mostrar</h5>
-            <br>
-            <br>
-            <form method="post">
-                {% csrf_token %}
-                <a href="/home/" class="btn btn-danger">Volver</a>
-            </form>
-            {% endif %}
+            <div class="modal fade bd-example-modal-lg{{modals}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h4>Description</h4>
+                            <br>
+                            {% cycle item.test_id as row silent %}
+                            <p class="card-text" id="copy1{{row}}">{{ item.description }}</p>
+                            <div class="row">
+                                <button type="button" class="btn btn-outline-danger btn-sm ml-auto mr-4"
+                                        data-clipboard-target="#copy1{{row}}">
+                                    Copy
+                                </button>
+                            </div>
+                            <hr>
+                            <h4>Task</h4>
+                            <br>
+                            <p class="card-text" id="copy2{{row}}">{{ item.task }}</p>
+                            <div class="row">
+                                <button type="button" class="btn btn-outline-danger btn-sm ml-auto mr-4"
+                                        data-clipboard-target="#copy2{{row}}">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary btn-lg mr-3" data-dismiss="modal">
+                                Close
+                            </button>
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="/viewlist/" class="btn btn-danger btn-lg mr-2">Start</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+          {% endfor %}
     </div>
     <br>
+
+    {% else %}
+    <div class="row">
+        <div class="col-xl-12">
+            <h5 class="card-title">No hay registros para mostrar</h5>
+        </div>
+    </div>
+    {% endif %}
+    <!--<div class="row">-->
+    <!--<br>-->
+    <!--<div class="accordion" id="accordionExample">-->
+    <!--{% if object_list %}-->
+    <!--{% for item in object_list %}-->
+    <!--<div class="card">-->
+    <!--<div class="card-header" id="headingOne">-->
+    <!--<h3 class="mb-0">-->
+    <!--<button class="btn" type="button" data-toggle="collapse"-->
+    <!--data-target="#collapse{{item.test_id}}"-->
+    <!--aria-controls="collapseOne">-->
+    <!--{{ item.test_name }}-->
+    <!--</button>-->
+    <!--</h3>-->
+    <!--</div>-->
+    <!--<div id="collapse{{item.test_id}}" class="collapse body" aria-labelledby="headingOne"-->
+    <!--data-parent="#accordionExample">-->
+    <!--<div class="card-body">-->
+    <!--<div class="card-body">-->
+    <!--<div class="row">-->
+    <!--<div class="col">-->
+    <!--<h4>Description</h4>-->
+    <!--</div>-->
+    <!--<div class="col-2">-->
+    <!--<div class="alert alert-danger" role="alert">-->
+    <!--<a href="#" class="alert-link">Level:&nbsp;&nbsp;</a>{{ item.difficulty }}-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<tr>-->
+    <!--</div>-->
+    <!--{% cycle item.test_id as row silent %}-->
+    <!--<p class="card-text" id="copy1{{row}}">{{ item.description }}</p>-->
+    <!--<div class="row">-->
+    <!--<button type="button" class="btn btn-outline-danger btn-sm ml-auto"-->
+    <!--data-clipboard-target="#copy1{{row}}">-->
+    <!--Copy-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--<h4>Task</h4>-->
+    <!--<p class="card-text" id="copy2{{row}}">{{ item.task }}</p>-->
+    <!--<div class="row">-->
+    <!--<button type="button" class="btn btn-outline-danger btn-sm ml-auto"-->
+    <!--data-clipboard-target="#copy2{{row}}">-->
+    <!--Copy-->
+    <!--</button>-->
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--{% endfor %}-->
+    <!--</div>-->
+    <!--<br>-->
+    <!--<form method="post">-->
+    <!--{% csrf_token %}-->
+    <!--<a href="/viewlist/" class="btn btn-dark">Start</a>-->
+    <!--</form>-->
+    <!--{% else %}-->
+    <!--<h5 class="card-title">No hay registros para mostrar</h5>-->
+    <!--<br>-->
+    <!--<br>-->
+    <!--<form method="post">-->
+    <!--{% csrf_token %}-->
+    <!--<a href="/home/" class="btn btn-danger">Volver</a>-->
+    <!--</form>-->
+    <!--{% endif %}-->
+    <!--</div>-->
     <br>
 </div>
 <script>
@@ -87,6 +157,20 @@ new ClipboardJS('.btn', {
         return trigger.getAttribute('aria-label');
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

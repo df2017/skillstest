@@ -7,9 +7,9 @@
     <br>
     <div class="row">
         <div class="col-xl-12">
-            <div class="card-header text-white text-center bg-danger">Choose and do the tests
+            <div class="card-header text-center">
+                Choose and do the tests
             </div>
-
             <br>
             <form method="post">
                 {% csrf_token %}
@@ -26,8 +26,10 @@
                 {% endfor %}
                 {% endfor %}
                 {% endif %}
+
                 <div class="card bg-light mb-3 ">
-                    <div class="card-header">
+                    <div class="card text-white bg-secondary mb-3">
+                        <br>
                         <div class="form-row">
                             <div class="form-group col-md-1">
                             </div>
@@ -51,8 +53,8 @@
                             </div>
                             <div class="form-group col-md-1">
                             </div>
-
                         </div>
+                        <br>
                     </div>
                     <div class="card-body text-center">
                         <div class="form-group">
@@ -73,7 +75,6 @@
                             &nbsp;&nbsp;&nbsp;<a href="/viewlist/" class="btn btn-danger">Back</a>
                         </div>
                     </div>
-
                 </div>
             </form>
         </div>
