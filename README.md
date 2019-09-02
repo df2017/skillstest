@@ -32,3 +32,8 @@ pip install -r requirements.txt
 	b. "python manage.py migrate"
 	c. "python manage.py createsuperuser"
 	d. "python manage.py runserver"
+
+## Screenshot
+
+![alt text](https://github.com/df2017/userskills/blob/master/screenshot/home_page.JPG)
+
