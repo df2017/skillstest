@@ -28,10 +28,10 @@ pip install -r requirements.txt
 4. Luego deben crear la carpeta db para guardar el archivo de la base de datos.
 
 5. Para finalizar ejecutar los siguientes comandos en la consola:
-	a. "python manage.py makemigrations core"
-	b. "python manage.py migrate"
-	c. "python manage.py createsuperuser"
-	d. "python manage.py runserver"
+	__a. "python manage.py makemigrations core"
+	__b. "python manage.py migrate"
+	__c. "python manage.py createsuperuser"
+	__d. "python manage.py runserver"
 
 ## Screenshot
 
