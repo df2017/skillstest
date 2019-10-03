@@ -29,10 +29,10 @@ pip install -r requirements.txt
 
 5. Para finalizar ejecutar los siguientes comandos en la consola:
 
-	a. "python manage.py makemigrations core"
-	b. "python manage.py migrate"
-	c. "python manage.py createsuperuser"
-	d. "python manage.py runserver"
+a. "python manage.py makemigrations core"
+b. "python manage.py migrate"
+c. "python manage.py createsuperuser"
+d. "python manage.py runserver"
 
 ## Screenshot
 
