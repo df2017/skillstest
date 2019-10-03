@@ -13,15 +13,11 @@ Windows 10
 Python 3
 Virtualenv
 
-Ejecutar el siguiente comando en la terminal:
-
-pip install -r requirements.txt
-
 ## Instalacion
 
 1. Descargar repo mediante el comando "git clone https://github.com/df2017/userskills.git".
 
-2. Luego ejecuta el comando pip (ver "Requisitos").
+2. Luego ejecuta el comando "pip install -r requirements.txt".
 
 3. Con respecto al archivo settings.py, deben crear en el mismo directorio del archivo mencionado, un archivo llamado ".env", en el mismo    deben configurar sus variables de entorno por seguridad al proyecto en produccion.
 
@@ -29,10 +25,10 @@ pip install -r requirements.txt
 
 5. Para finalizar ejecutar los siguientes comandos en la consola:
 
-a. "python manage.py makemigrations core"
-b. "python manage.py migrate"
-c. "python manage.py createsuperuser"
-d. "python manage.py runserver"
+	a. "python manage.py makemigrations core"
+	b. "python manage.py migrate"
+	c. "python manage.py createsuperuser"
+	d. "python manage.py runserver"
 
 ## Screenshot
 
