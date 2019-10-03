@@ -24,11 +24,11 @@ Virtualenv
 4. Luego deben crear la carpeta db para guardar el archivo de la base de datos.
 
 5. Para finalizar ejecutar los siguientes comandos en la consola:
-- [Insertar HN](#insertar-hn).
-	- ."python manage.py makemigrations core"
-	- ."python manage.py migrate"
-	- ."python manage.py createsuperuser"
-	- ."python manage.py runserver"
+
+  - "python manage.py makemigrations core"
+  - "python manage.py migrate"
+  - "python manage.py createsuperuser"
+  - "python manage.py runserver"
 
 ## Screenshot
 
