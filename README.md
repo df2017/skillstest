@@ -25,10 +25,10 @@ Virtualenv
 
 5. Para finalizar ejecutar los siguientes comandos en la consola:
 
-	a.- "python manage.py makemigrations core"
-	b.- "python manage.py migrate"
-	c.- "python manage.py createsuperuser"
-	d.- "python manage.py runserver"
+	- ["python manage.py makemigrations core"]
+	- ["python manage.py migrate"]
+	- ["python manage.py createsuperuser"]
+	- ["python manage.py runserver"]
 
 ## Screenshot
 
